@@ -67,4 +67,3 @@ parentContainer.addEventListener('click',(e)=>{
         e.target.parentNode.parentNode.remove()
     }
 })
-

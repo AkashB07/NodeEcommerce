@@ -14,7 +14,7 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  console.log(res.body)
+  // console.log(res.body)
 
   req.user.createProduct({
     title:title,
@@ -104,7 +104,7 @@ exports.postDeleteProduct=(req,res,next)=>{
     return  product.destroy()
    
   }).then((result)=>{
-    console.log("deleted");
+    // console.log("deleted");
     res.redirect('/admin/products')
 
   })

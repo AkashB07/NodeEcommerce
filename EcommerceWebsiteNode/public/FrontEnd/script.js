@@ -124,7 +124,7 @@ function addItemToCart(title, price, image,qty) {
     />
     <span class="cart-item-title">${title}</span>
   </div>
-  <span class="cart-price cart-column">${price}</span>
+  <span class="cart-price cart-column">$${price}</span>
   <div class="cart-quantity cart-column">
     <input class="cart-quantity-input" type="number" value=${qty} />
     <!-- <button class="btn btn-danger" type="button">REMOVE</button> -->

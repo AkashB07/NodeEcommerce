@@ -1,22 +1,30 @@
 const path = require('path');
 
 const express = require('express');
-require('dotenv').config()
+
 const bodyParser = require('body-parser');
+
 
 const errorController = require('./controllers/error');
 
-const sequelize=require('./util/database')
 const app = express();
+
+const  cors = require('cors')
+
+const dotnev = require('dotenv');
+dotnev.config();
+
+const sequelize=require('./util/database')
+
 const Product=require('./models/product')
 const User=require('./models/user')
 const Cart=require('./models/cart')
 const CartItem=require('./models/cart-item')
 const Order=require('./models/order')
 const OrderItem=require('./models/order-item')
-var cors = require('cors')
 
 app.use(cors())
+
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -26,6 +34,8 @@ const shopRoutes = require('./routes/shop');
 // app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use((req,res,next)=>{
     User.findByPk(1).then(user=>{
@@ -43,6 +53,10 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use(errorController.get404);
+
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname, `public/${req.url}`))
+})
 
 User.hasOne(Cart);
 Cart.belongsTo(User);

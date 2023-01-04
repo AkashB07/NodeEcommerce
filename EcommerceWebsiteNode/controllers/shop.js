@@ -15,7 +15,7 @@ exports.getProducts = (req, res, next) => {
   })
 
   .then((produucts)=>{
-    console.log(totalCountPage)
+    // console.log(totalCountPage)
     res.json({produucts,pageCount:totalCountPage})
     // res.render('shop/product-list', {
     //   prods: produucts,
