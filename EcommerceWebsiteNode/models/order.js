@@ -8,6 +8,5 @@ const Order=sequelize.define('order',{
         allowNull:false,
         primaryKey:true
     }
-
 });
 module.exports=Order;
